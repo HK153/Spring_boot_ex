@@ -15,7 +15,7 @@
 </head>
 <body>
 <!-- html form(파라미터이름) --MemberDTO(프로퍼티이름)--Member테이블(컬럼이름 )저장 -->
-<form action="<%=request.getContextPath() %>/memberinsert" method="post">
+<form action="<%=request.getContextPath() %>/memberinsert" method="post" enctype="multipart/form-data">
 <table >
 <tr> <th colspan="2" text-align="center"><h2>회원가입 폼</h2></th> </tr>
 <tr>
@@ -42,7 +42,11 @@
 <tr>
 	<td>주소 입력 : </td>
 	<td> <input type="text" name= "address"></td>
+</tr>
 <tr>
+	<td>이미지 : </td>
+	<td> <input type="file" name="imagefile"></td>
+</tr>
 <tr>
 	
 	<td colspan="2"><input type="submit" value="회원가입"> 

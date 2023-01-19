@@ -1,14 +1,18 @@
 package spring.mybatis;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpSession;
@@ -69,11 +73,25 @@ public class MemberController {
 	}
 	
 	@PostMapping("/memberinsert")
-	public ModelAndView memberinsert(MemberDTO dto ) {
+	public ModelAndView memberinsert(@ModelAttribute("dto")MemberDTO dto ) throws IOException {
 		//dto 객체 저장값 (폼 입력값) member테이블 저장
 		//indate (가입일은 sql)
 		//저장한 결과 "정상회원가입처리" 모델로 저장
 		//mybatis/memberinsert2 뷰 
+		
+		//파일 업로드 c:/upload 저장처리
+		//dto image변수에 c:upload 저장파일명 세팅 
+		String savePath = "c:/upload/";
+		MultipartFile mf = dto.getImagefile();
+		
+		String filename = mf.getOriginalFilename();
+		dto.setImage(filename);
+		String beforeext = filename.substring(0,filename.lastIndexOf("."));
+		String ext = filename.substring(filename.lastIndexOf("."));
+		String newfilename = beforeext + "(" + UUID.randomUUID().toString() + ")" + ext;
+		File serverfile =new File(savePath + newfilename);
+		mf.transferTo(serverfile);
+		
 		String result ;
 		int row;
 		MemberDTO db_dto = service.onemember(dto.getId());

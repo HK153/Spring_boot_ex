@@ -1,0 +1,7 @@
+package websocket;
+
+import org.springframework.web.socket.WebSocketHandler;
+
+public class ChatWebSoketHandler implements WebSocketHandler {
+
+}

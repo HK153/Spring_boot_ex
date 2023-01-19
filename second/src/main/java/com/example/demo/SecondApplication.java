@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages ="upload") //패키지 늘때마다 추가해 주어야함
 @ComponentScan(basePackages = "spring.mybatis")
 @MapperScan(basePackages="spring.mybatis")
+@ComponentScan(basePackages = "websocket")
 public class SecondApplication {
 
 	public static void main(String[] args) {

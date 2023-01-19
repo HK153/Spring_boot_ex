@@ -1,0 +1,8 @@
+package websocket;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ChatWebSocketConfig {
+// /ws 요청시 ChatWebSocketHandler 
+}

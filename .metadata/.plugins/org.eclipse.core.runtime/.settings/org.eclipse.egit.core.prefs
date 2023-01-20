@@ -1,4 +1,6 @@
-GitRepositoriesView.GitDirectories=C\:\\sba\\manitto\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\sba\\manitto\\.git;
+GitRepositoriesView.GitDirectories=C\:\\sba\\workspace_boot\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+RepositoryGroups.uuids=
+RepositorySearchDialogSearchPath=C\:\\sba\\workspace_boot
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

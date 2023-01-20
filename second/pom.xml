@@ -38,7 +38,7 @@
 			<artifactId>accessors-smart</artifactId>
 			<version>2.4.8</version>
 		</dependency>
-		<!--for tomcat restart - starter에서 선택 가능-->
+		<!--for tomcat restart - starter에서 선택 가능--> <!--자동재시작 서정-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

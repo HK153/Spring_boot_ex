@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 	@Autowired
-	@Qualifier("service")
+	@Qualifier("memberservice")
 	MemberService service;
 	
 	//http://ip:pport/spring/
@@ -79,18 +80,20 @@ public class MemberController {
 		//저장한 결과 "정상회원가입처리" 모델로 저장
 		//mybatis/memberinsert2 뷰 
 		
+		
 		//파일 업로드 c:/upload 저장처리
 		//dto image변수에 c:upload 저장파일명 세팅 
 		String savePath = "c:/upload/";
-		MultipartFile mf = dto.getImagefile();
-		
-		String filename = mf.getOriginalFilename();
-		dto.setImage(filename);
+		MultipartFile imagefile = dto.getImagefile();
+		String filename = imagefile.getOriginalFilename();
 		String beforeext = filename.substring(0,filename.lastIndexOf("."));
 		String ext = filename.substring(filename.lastIndexOf("."));
 		String newfilename = beforeext + "(" + UUID.randomUUID().toString() + ")" + ext;
 		File serverfile =new File(savePath + newfilename);
-		mf.transferTo(serverfile);
+		imagefile.transferTo(serverfile);
+		
+		dto.setImage(newfilename);
+		
 		
 		String result ;
 		int row;
@@ -195,6 +198,40 @@ public class MemberController {
 		mv.setViewName("mybatis/start");
 		return mv;
 	}
+	@ResponseBody
+	@GetMapping("/othermemberinform")
+	public MemberDTO othermemberinform(String id, HttpSession session) {
+		//id정보를 db에서 가져온다
+		//모델 저장
+		//mybatis/othermemberinform.jsp전달
+		/*
+		 * 1.로그인되었는지 확인
+		 * 2.로그인안되었으면 start.jsp
+		 * 2-2.로그인아이디가 "admin"인지 확인하여
+		 * 	2-2-1.아래코드 수행
+		 * 	2-2-2. alert("회원정보 볼 권한 없습니다")
+		 */
+		String model =null;
+		MemberDTO dto= new MemberDTO();
+		String loginid = (String) session.getAttribute("loginid");
+		if(loginid ==null) {
+			model ="로그인 이전입니다.";
+			dto.setId(model);
+		}
+		else {
+			if(! loginid.equalsIgnoreCase("admin")) {
+				model ="회원정보 볼 권한 없습니다.";
+				dto.setId(model);
+			}
+			else {
+				dto = service.onemember(id);
+				
+			}
+		}
+		return dto;
+		
+	}
+	
 	
 	
 	

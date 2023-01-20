@@ -13,10 +13,11 @@
 
 <li> <a href="<%=request.getContextPath() %>/login"> 로그인 하러가기</a></li>
 <li> <a href="<%=request.getContextPath() %>/logout"> 로그아웃 하러가기</a></li>
-<li> <a href="<%=request.getContextPath() %>/mybatismemberlist"> 회원리스트 보러가기</a></li>
-<li> <a href="<%=request.getContextPath() %>/memberinsert"> 회원가입 하러가기</a></li>
+<li> <a href="<%=request.getContextPath() %>/mybatismemberlist"> 회원리스트 보러가기(로그인x)</a></li>
+<li> <a href="<%=request.getContextPath() %>/memberinsert"> 회원가입 하러가기(로그인x)</a></li>
 <li> <a href="<%=request.getContextPath() %>/memberinform"> 내정보 보러가기</a></li>
 <li> <a href="<%=request.getContextPath() %>/memberdelete"> 회원탈퇴하기</a></li>
+<li> <a href="<%=request.getContextPath() %>/boardlist"> 게시판(로그인x))</a></li>
 
 </ul>
 </h4>

@@ -51,7 +51,7 @@ $(document).ready(function(){
 </tr>
 <tr>
 	<td>주소 : </td>
-	<td> <input type="text" name= "address" value="${ dto.address}"></td>
+	<td> <input type="text" name= "address" value="${dto.address}"></td>
 <tr>
 <tr>
 	

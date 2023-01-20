@@ -15,5 +15,8 @@
 		<item key="sortItemState" value="false"/>
 	</section>
 	<section name="GitCommitMessageComponent">
+		<list key="C:\sba\manitto\.git">
+			<item value="empty"/>
+		</list>
 	</section>
 </section>

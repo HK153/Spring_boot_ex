@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * 해당 메소드를 호출하면 자동으로 쿼리문이 실행되도록 해주는 방식입니다
  */
 
-@Service("service")
+@Service("memberservice")
 public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDAO dao;

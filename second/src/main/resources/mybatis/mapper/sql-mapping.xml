@@ -26,7 +26,7 @@
  insert into member values(#{id},#{pw},#{name},#{phone},#{email},#{address},now())
  </insert> -->
  <insert id="insertmember" parameterType="memberdto">
- insert into member values(#{id},#{pw},#{name},#{phone},#{email},#{address},now(),#{imagefile})
+ insert into member values(#{id},#{pw},#{name},#{phone},#{email},#{address},now(),#{image})
  </insert>
  
  <update id ="updatemember" parameterType="memberdto">

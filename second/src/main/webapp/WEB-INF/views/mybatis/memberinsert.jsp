@@ -44,7 +44,7 @@
 	<td> <input type="text" name= "address"></td>
 </tr>
 <tr>
-	<td>이미지 : </td>
+	<td>파일선택 : </td>
 	<td> <input type="file" name="imagefile"></td>
 </tr>
 <tr>
